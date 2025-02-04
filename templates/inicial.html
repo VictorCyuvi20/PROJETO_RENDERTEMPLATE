@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>PAGINA-INICIAL</title>
 
     <style>
         body{
-            background-color: {{cor_fundo_html}};
+            background: {{lista_imagens_html}};
+            background-color: {{cor_fundo_html}}
         }
 
         img{
-            width: 300px;
-            height: 300px;
+            width: 700px;
+            height: 550px;
         }
+        
     </style>
 </head>
 <body>
@@ -22,14 +25,24 @@
 
     <main>
 
-        <figure>
-            <img src="/static/img/{{lista_imagens_html}}" alt="FOTOS-PANTHEON">
-        </figure>
+
+        <section class="sec_img">
+            <figure>
+                <img src="/static/img/{{lista_imagens_html}}" alt="FOTOS-PANTHEON">
+            </figure>
+        </section>
+        
 
 
         <section class="falas-sec-01">
 
-            <p>{{falas_pantheon_html}}</p>
+            <div class="div-falas">
+                <h1 class="falas_p">Fala do dia:</h1>
+                <p>{{falas_pantheon_html}}</p>
+            </div>
+
+            
+            
 
         </section>
 

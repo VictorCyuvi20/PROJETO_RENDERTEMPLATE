@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" href="./style.css">
+             
+    <title>Cadastro de Frases</title>
+
+</head>
+<body>
+
+
+
+    <section class="sec_01">
+        <form class="col-s12">
+
+
+            <section class="sec_input">
+                
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"></i>
+                        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                        <label for="icon_prefix2">Digite uma frase do seu gosto</label>
+                    </div>
+                </div>
+            
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </section>
+                
+            
+            
+            
+            
+                
+            
+
+                
+            
+        <section class="sec_desc">
+            {% for frases in lista_frases_html %}
+                <div class="row">
+                    <div class="col s12 m5">
+                        <div class="card-panel teal">
+                            <span class="white-text">{{frases}}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+
+        
+                
+        
+            
+        </form>
+    </section>
+    
+
+</body>
+</html>
