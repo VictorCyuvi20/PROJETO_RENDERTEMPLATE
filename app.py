@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect 
 import random
+
 
 app = Flask(__name__)
 
@@ -8,6 +9,8 @@ lista_cores = ["red", "blue", "purple", "violet", "orange"]
 
 lista_imagens = ["pantheon.png", "pantheon-noxus.jpg", "pantheon-galaxia.jpg", "pantheon-destruido.jpg", "pantheon-reidosmares.jpg"]
 
+Cadastro_cores = []
+
 @app.route("/sobre")
 def pag_sobre():
     cor_fundo = random.choice(lista_cores)
@@ -15,7 +18,7 @@ def pag_sobre():
     
 # TODA AS ROTAS
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def pag_inicial():
     imagens = random.choice(lista_imagens)
     cor_fundo = random.choice(lista_cores)
@@ -23,8 +26,24 @@ def pag_inicial():
     return render_template("inicial.html", cor_fundo_html = cor_fundo, falas_pantheon_html = falas_pantheon, lista_imagens_html = imagens)
 
 
-@app.route("/cadastro")
+@app.route("/cadastro", methods=["GET"])
 def pag_cadastro():
     return render_template("cadastro.html", lista_frases_html = Lista_falas)
+
+@app.route("/post/cadastrarfrase", methods=["POST"])
+def post_cadastrarfrase():
+    frase_vinda_html = request.form.get("frase")
+    Lista_falas.append(frase_vinda_html)
+    return redirect ("/cadastro")
+
+@app.route("/cadastro-cores", methods=["GET"])
+def pag_cores():
+    return render_template("lista-cores.html", lista_cores_cadastradas_html = Cadastro_cores)
+
+@app.route("/post/cadastrarcor", methods=["POST"])
+def post_cadastrarcor():
+    cor_vinda_html = request.form.get("cores")
+    Cadastro_cores.append(cor_vinda_html)
+    return redirect("/cadastro-cores")
 
 app.run(debug= True)
